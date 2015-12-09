@@ -15,7 +15,8 @@ app.filter('Oz', function() {
 app.controller('map', function($scope){
 	
 });
-app.controller('form', function($scope, $http) {
+app.controller('form', function($scope, $rootScope, $http) {
+	$rootScope = 'BeerBin';
 	$scope.form = {};
 	$scope.form.entry = {};
 	$scope.form.lat = 'test';
