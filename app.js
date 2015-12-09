@@ -16,7 +16,7 @@ app.controller('map', function($scope){
 	
 });
 app.controller('form', function($scope, $rootScope, $http) {
-	$rootScope = 'BeerBin';
+	$rootScope.siteTitle = 'BeerBin';
 	$scope.form = {};
 	$scope.form.entry = {};
 	$scope.form.lat = 'test';
