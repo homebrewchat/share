@@ -14,13 +14,13 @@
       RewriteRule ^(.*)/$ $1 [R,QSA,L]      
 
   # Handle Prerender.io
-    RequestHeader set X-Prerender-Token "4nSdKbrZf1w4Rd1ArjaC"
+    #RequestHeader set X-Prerender-Token "4nSdKbrZf1w4Rd1ArjaC"
 
     RewriteCond %{HTTP_USER_AGENT} baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest [NC,OR]
     RewriteCond %{QUERY_STRING} _escaped_fragment_
 
     # Proxy the request
-    RewriteRule ^(.*)$ http://service.prerender.io/http://%{HTTP_HOST}/$1 [P,L]
+    RewriteRule ^(.*)$ https://glacial-wildwood-8322.herokuapp.com/http://%{HTTP_HOST}/$1 [P,L]
 
   # If non existent
     # Accept everything on index.html
