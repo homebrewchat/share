@@ -20,7 +20,7 @@
     RewriteCond %{QUERY_STRING} _escaped_fragment_
 
     # Proxy the request
-    RewriteRule ^(.*)$ https://glacial-wildwood-8322.herokuapp.com/http://%{HTTP_HOST}/$1 [P,L]
+    RewriteRule ^(.*)$ http://service.prerender.io/http://%{HTTP_HOST}/$1 [P,L]
 
   # If non existent
     # Accept everything on index.html
