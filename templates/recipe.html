@@ -1,113 +1,115 @@
-<h2>Recipe</h2>
-<div class="panel panel-default recipe">
-	<div class="panel-body">
-		<div class="row">
-			<div class="col-md-6">
-				<h2><span class="label label-default" style="background-color:{{recipe.data.color|srmColor}}"></span> {{recipe.data.name}}</h2>
-			</div>
-			<div class="col-md-6">
-				<div class="panel panel-default">
-					<table class="table stats">
-						<tbody>
-							<tr>
-								<td>{{recipe.data.og|number}}</td>
-								<td>{{recipe.data.fg|number}}</td>
-								<td>{{recipe.data.ibu|number:1}}</td>
-								<td>{{recipe.data.abv|number:1}}%</td>
-							</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<th>OG</th>
-								<th>FG</th>
-								<th>IBU</th>
-								<th>ABV</th>
-							</tr>
-						</tfoot>
-					</table>
+<div class="container">
+	<h2>BeerBin</h2>
+	<div class="panel panel-default recipe">
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-6">
+					<h2><span class="label label-default" style="background-color:{{recipe.general.color|srmColor}}"></span> {{recipe.data.name}}</h2>
+				</div>
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<table class="table stats">
+							<tbody>
+								<tr>
+									<td>{{recipe.general.og|number}}</td>
+									<td>{{recipe.general.fg|number}}</td>
+									<td>{{recipe.general.ibu|number:1}}</td>
+									<td>{{recipe.general.abv|number:1}}%</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th>OG</th>
+									<th>FG</th>
+									<th>IBU</th>
+									<th>ABV</th>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="recipe-details">
-			<div class="panel panel-info">
-				<div class="panel-heading">Fermentables</div>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Weight</th>
-							<th>Yield</th>
-							<th>Color</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="item in recipe.data.fermentables">
-							<td>{{item.name}}</td>
-							<td>
-								<span ng-if="convertUnits(item.weight, 'lb') > 0">{{convertUnits(item.weight, 'lb') | number}} lbs </span>{{convertUnits(item.weight, 'oz')| number:0}} oz 
-							</td>
-							<td>{{ppg(item.yield)|number:0}}</td>
-							<td>{{item.color}}</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="panel panel-success">
-				<div class="panel-heading">Hops</div>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Amount</th>
-							<th>Hop</th>
-							<th>Time</th>
-							<th>Use</th>
-							<th>Form</th>
-							<th>AA</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="item in recipe.data.spices">
-							<td>{{convertUnits(item.weight, 'oz')|number}}</td>
-							<td>{{item.name}}</td>
-							<td>{{item.time}}</td>
-							<td>{{item.use}}</td>
-							<td>{{item.form}}</td>
-							<td>{{item.aa}}%</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="panel panel-warning">
-				<div class="panel-heading">Yeasts</div>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Type</th>
-							<th>Form</th>
-							<th>Attenuation</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="item in recipe.data.yeast">
-							<td>{{item.name}}</td>
-							<td>{{item.type}}</td>
-							<td>{{item.form}}</td>
-							<td>{{item.attenuation}}</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="panel panel-danger">
-				<div class="panel-heading">Steps</div>
-				<table class="table">
-					<tbody>
-						<tr ng-repeat="item in recipe.timeline">
-							<td>{{duration(item[0])}}</td>
-							<td>{{item[1]}}</td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="recipe-details">
+				<div class="panel panel-info">
+					<div class="panel-heading">Fermentables</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Weight</th>
+								<th>Yield</th>
+								<th>Color</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in recipe.data.fermentables">
+								<td>{{item.name}}</td>
+								<td>
+									<span ng-if="convertUnits(item.weight, 'lb') > 0">{{convertUnits(item.weight, 'lb') | number}} lbs </span>{{convertUnits(item.weight, 'oz')| number:0}} oz 
+								</td>
+								<td>{{ppg(item.yield)|number:0}}</td>
+								<td>{{item.color}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="panel panel-success">
+					<div class="panel-heading">Hops</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Amount</th>
+								<th>Hop</th>
+								<th>Time</th>
+								<th>Use</th>
+								<th>Form</th>
+								<th>AA</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in recipe.data.spices">
+								<td>{{convertUnits(item.weight, 'oz')|number}}</td>
+								<td>{{item.name}}</td>
+								<td>{{item.time}}</td>
+								<td>{{item.use}}</td>
+								<td>{{item.form}}</td>
+								<td>{{item.aa}}%</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="panel panel-warning">
+					<div class="panel-heading">Yeasts</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Type</th>
+								<th>Form</th>
+								<th>Attenuation</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in recipe.data.yeast">
+								<td>{{item.name}}</td>
+								<td>{{item.type}}</td>
+								<td>{{item.form}}</td>
+								<td>{{item.attenuation}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="panel panel-danger">
+					<div class="panel-heading">Steps</div>
+					<table class="table">
+						<tbody>
+							<tr ng-repeat="item in recipe.timeline">
+								<td>{{duration(item[0])}}</td>
+								<td>{{item[1]}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

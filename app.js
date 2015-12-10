@@ -63,7 +63,15 @@ app.controller('form', function($scope, $rootScope, $http, api) {
 		var timeline = xmlRecipe.timeline(false);
 		var data = {
 			data: xmlRecipe,
-			timeline: timeline
+			timeline: timeline,
+			general: {
+				"color": xmlRecipe.color,
+				"ibu": xmlRecipe.ibu,
+				"og": xmlRecipe.og,
+				"fg": xmlRecipe.fg,
+				"abv": xmlRecipe.abv
+				
+			}
 		}
 		api.createItem('recipe', {data: data}).success(function(response){
 			console.log(response);
