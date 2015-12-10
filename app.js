@@ -116,6 +116,8 @@ app.controller('recipe', function($scope, $rootScope, $stateParams, api, $locati
 		$scope.recipe = data.data;
 		$rootScope.siteTitle = $scope.recipe.data.name + ' | ' + 'BeerBin';
 		$scope.loading = false;
+		$rootScope.general = $scope.recipe.general;
+		$rootScope.style = "Style: " + $scope.recipe.data.style.name;
 	});
 	$scope.convertUnits = function(number, type) {
 		var amount = Brauhaus.kgToLbOz(number);
