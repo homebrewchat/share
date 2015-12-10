@@ -109,6 +109,7 @@ app.controller('recipe', function($scope, $rootScope, $stateParams, api, $locati
 	var id = $stateParams.rid;
 	$scope.loading = true;
 	$scope.domain = $location.host();
+	$rootScope.url = 'http://' + $scope.domain + '/recipe/' + id;
 	$scope.rid = id;
 	api.loadItem('recipe', id).success(function(data){
 		console.log(data);
