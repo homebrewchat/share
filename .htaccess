@@ -19,7 +19,7 @@
     RewriteCond %{QUERY_STRING} _escaped_fragment_
 
     # Proxy the request
-    RewriteRule ^(.*)$ http://service.prerender.io/http://%{HTTP_HOST}$1 [P,L]
+    RewriteRule ^(.*)$ http://service.prerender.io/http://%{HTTP_HOST}/$1 [P,L]
 
   # If non existent
     # Accept everything on index.html
