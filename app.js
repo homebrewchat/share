@@ -17,7 +17,8 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, $location
 	        url: '/recipe/:rid',
 	        templateUrl: 'templates/recipe.html',
 	        controller: 'recipe'
-        });		
+        });
+        
 	
 });
 
@@ -48,14 +49,17 @@ app.filter('Oz', function() {
 app.controller('map', function($scope){
 	
 });
-app.controller('form', function($scope, $rootScope, $http, api) {
+app.controller('form', function($scope, $rootScope, $http, api, $location) {
 	$rootScope.siteTitle = 'BeerBin';
 	$scope.form = {};
 	$scope.form.entry = {};
 	$scope.form.lat = 'test';
 	$scope.form.long = 'test2';
-	$scope.recipes = []
+	$scope.domain = $location.host();
+	$scope.recipes = [];
+	$scope.loading = false;
 	$scope.do = function() {
+		$scope.loading = true;
 		var beerxml = $scope.form.beerxml;
 		var xmlRecipes = Brauhaus.Recipe.fromBeerXml(beerxml);
 		var xmlRecipe = xmlRecipes[0];
@@ -75,6 +79,9 @@ app.controller('form', function($scope, $rootScope, $http, api) {
 		}
 		api.createItem('recipe', {data: data}).success(function(response){
 			console.log(response);
+			data.id = response.objectId;
+			$location.path('/recipe/' + response.objectId);
+			$scope.loading = false;
 		});
 		$scope.recipes.push(data);
 	}
@@ -98,11 +105,16 @@ app.controller('form', function($scope, $rootScope, $http, api) {
 
 });
 
-app.controller('recipe', function($scope, $stateParams, api) {
+app.controller('recipe', function($scope, $rootScope, $stateParams, api, $location) {
 	var id = $stateParams.rid;
+	$scope.loading = true;
+	$scope.domain = $location.host();
+	$scope.rid = id;
 	api.loadItem('recipe', id).success(function(data){
 		console.log(data);
 		$scope.recipe = data.data;
+		$rootScope.siteTitle = $scope.recipe.data.name + ' | ' + 'BeerBin';
+		$scope.loading = false;
 	});
 	$scope.convertUnits = function(number, type) {
 		var amount = Brauhaus.kgToLbOz(number);
