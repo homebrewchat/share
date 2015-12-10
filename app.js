@@ -9,13 +9,13 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, $location
 	$stateProvider
         .state('home', {
 	        url: '/',
-	        templateUrl: 'templates/home.html',
+	        templateUrl: '/templates/home.html',
 	        controller: 'form'
         })
         // Register
         .state('recipe', {
 	        url: '/recipe/:rid',
-	        templateUrl: 'templates/recipe.html',
+	        templateUrl: '/templates/recipe.html',
 	        controller: 'recipe'
         });
         
