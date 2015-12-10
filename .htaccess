@@ -1,3 +1,4 @@
+	DirectoryIndex index.html
   RewriteEngine On
 # If requested resource exists as a file or directory
   # (REQUEST_FILENAME is only relative in virtualhost context, so not usable)
