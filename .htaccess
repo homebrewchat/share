@@ -16,7 +16,7 @@
   # Handle Prerender.io
     #RequestHeader set X-Prerender-Token "4nSdKbrZf1w4Rd1ArjaC"
 
-    RewriteCond %{HTTP_USER_AGENT} baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|slackbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest [NC,OR]
     RewriteCond %{QUERY_STRING} _escaped_fragment_
 
     # Proxy the request
