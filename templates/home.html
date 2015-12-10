@@ -1,0 +1,18 @@
+<div class="loading history" ng-show="loading"><img src="/images/loading-spin.svg"></div>
+	    <div class="container">
+			<div id="map" ng-controller="map"></div>
+			<div id="form" ng-controller="form" style="margin-top:30px;">
+				<div class="panel panel-default">
+					<div class="panel-heading">Input beerXML</div>
+					<div class="panel-body">
+						<form ng-submit="do()">
+						<div class="form-group">
+							<textarea class="form-control input-lg beer-input" placeholder="Paste beerXML" ng-model="form.beerxml" required></textarea>
+							
+						</div>
+						<button type="submit" class="btn btn-success btn-full btn-lg">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+	    </div>
