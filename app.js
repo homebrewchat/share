@@ -19,7 +19,7 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, $location
 	        controller: 'recipe'
         });
         
-	
+	$locationProvider.html5Mode(true);
 });
 
 app.factory('api', function($http){
